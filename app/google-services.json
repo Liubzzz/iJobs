@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "219140307698",
+    "firebase_url": "https://ijobs-3a27d-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ijobs-3a27d",
+    "storage_bucket": "ijobs-3a27d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219140307698:android:3955741c953d35bf1fee6b",
+        "android_client_info": {
+          "package_name": "com.example.ijobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219140307698-166ipb3dqtii9lvhd3auut8lvailpp6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFrBeSWd840BEeEv7HA-utFQ0fT9vB3Ps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219140307698-166ipb3dqtii9lvhd3auut8lvailpp6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
