@@ -226,7 +226,7 @@ class AddAnnouncementActivity : ComponentActivity() {
 
 
 
-            if(!(jobprice.matches("^[0-9]\$".toRegex()) && jobphone.matches("^[0-9]\$".toRegex()) ) )
+            if(!(jobprice.matches("^[0-9]*$".toRegex()) && jobphone.matches("^[0-9]*$".toRegex()) ) )
                 Toast.makeText(this, "price or phone number not valid", Toast.LENGTH_LONG).show()
 
             else
