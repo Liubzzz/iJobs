@@ -66,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/job_phone"
         app:layout_constraintVertical_bias="0.104" />
 
+
     <EditText
         android:id="@+id/job_location"
         android:layout_width="267dp"

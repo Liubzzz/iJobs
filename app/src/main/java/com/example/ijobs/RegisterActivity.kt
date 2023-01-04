@@ -74,6 +74,7 @@ class RegisterActivity : ComponentActivity() {
 
 
 
+
             if(!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~\$^+=<>]).{8,20}\$".toRegex()))
                 Toast.makeText(this, "password not valid", Toast.LENGTH_LONG).show()
 

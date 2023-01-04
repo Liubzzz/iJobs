@@ -11,6 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_page)
 
+
         // get reference to all views
 
         var btn_home = findViewById(R.id.btn_home) as Button
