@@ -6,5 +6,6 @@ data class Services(
     var servicePhone: String? = null,
     var servicePrice: String? = null,
 
-    var serviceLocation: String? = null
+    var serviceLocation: String? = null,
+    var serviceOwner: String?= null
 )
