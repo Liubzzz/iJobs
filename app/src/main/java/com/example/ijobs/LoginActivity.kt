@@ -2,40 +2,92 @@ package com.example.ijobs
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.google.firebase.database.*
 
 class LoginActivity : ComponentActivity() {
+    private var firebaseDatabase : FirebaseDatabase? = null
+    private var databaseReference: DatabaseReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.login_page)
 
-        // get reference to all views
-        var et_user_name = findViewById(R.id.et_user_name) as EditText
-        var et_password = findViewById(R.id.et_password) as EditText
-        var btn_register = findViewById(R.id.btn_register) as Button
-        var btn_login = findViewById(R.id.btn_login) as Button
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        databaseReference = firebaseDatabase?.getReference("users")
 
-        btn_register.setOnClickListener {
+
+
+        var username = findViewById(R.id.et_user_name) as EditText
+        var password = findViewById(R.id.et_password) as EditText
+        var btnlogin = findViewById(R.id.btn_login) as Button
+        var btnregister = findViewById(R.id.btn_register) as Button
+
+        btnlogin.setOnClickListener{
+            val intent = Intent(this,MainActivity::class.java)
+            var count : Int? = 0
+            databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(ds in snapshot.children){
+                        val id = ds.key
+                        val userName = ds.child("userName").value.toString()
+                        val userPassword = ds.child("userPassword").value.toString()
+                        val userEmail = ds.child("userEmail").value.toString()
+
+                        if(username.text.toString() == userName && password.text.toString() == userPassword){
+                            startActivity(intent)
+                            count = 1
+                        }
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("ooooo","onCancelled: ${error.toException()}")
+                }
+
+            })
+            if(count == 0){
+                // Toast.makeText(applicationContext, "Error!", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        btnregister.setOnClickListener {
             val intent = Intent(this,RegisterActivity::class.java)
             startActivity(intent)
         }
 
-        // set on-click listener
-        btn_login.setOnClickListener {
+    }
+
+    private fun getData() {
+        databaseReference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(ds in snapshot.children){
+                    val id = ds.key
+                    val userName = ds.child("userName").value.toString()
+                    val userPassword = ds.child("userPassword").value.toString()
+                    val userEmail = ds.child("userEmail").value.toString()
 
 
-            //val user_name = et_user_name.text;
-            //val password = et_password.text;
-            //Toast.makeText(this@LoginActivity, user_name, Toast.LENGTH_LONG).show()
 
-            // your code to validate the user_name and password combination
-            // and verify the same
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
+                }
 
-        }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("ooooo","onCancelled: ${error.toException()}")
+            }
+
+        })
     }
 }
