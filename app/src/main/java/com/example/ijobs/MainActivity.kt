@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ijobs.ui.ProfileCharacteristics
 import com.google.firebase.database.*
 
 class MainActivity : ComponentActivity() {
@@ -70,8 +71,8 @@ class MainActivity : ComponentActivity() {
                 if(snapshot.exists()){
                     for(serviceSnapshot in snapshot.children){
 
-                        val service= serviceSnapshot.getValue(Services::class.java)
-                        serviceArrayList.add(service!!)
+                            val service = serviceSnapshot.getValue(Services::class.java)
+                            serviceArrayList.add(service!!)
 
 
                     }
