@@ -5,6 +5,7 @@ object ProfileCharacteristics {
     private var username: String? = null
     private var email: String? = null
     private var key : String? = null
+    private var phonenumber : String? = null
 
     fun getKey(): String?{
         return key
@@ -28,6 +29,14 @@ object ProfileCharacteristics {
 
     fun setEmail(saveemail: String){
         email = saveemail
+    }
+
+    fun getPhonenumber(): String?{
+        return phonenumber
+    }
+
+    fun setPhonenumber(savepnone : String){
+        phonenumber = savepnone
     }
 
 }

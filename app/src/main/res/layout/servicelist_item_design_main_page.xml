@@ -8,10 +8,10 @@
     android:layout_margin="16dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="355dp"
+        android:layout_height="217dp"
         android:layout_marginVertical="6dp"
+        android:layout_marginStart="16dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -26,7 +26,7 @@
                 android:text="Title: "
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/firebase_job_title"
@@ -35,7 +35,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Arya"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -51,7 +51,7 @@
                 android:text="Description: "
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/firebase_job_description"
@@ -60,7 +60,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Stark"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -76,7 +76,7 @@
                 android:text="Phone Number: "
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/firebase_job_phone"
@@ -85,7 +85,7 @@
                 android:layout_marginStart="8dp"
                 android:text="20"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -101,7 +101,7 @@
                 android:text="Price: "
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/firebase_job_price"
@@ -110,7 +110,7 @@
                 android:layout_marginStart="8dp"
                 android:text="20"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -126,7 +126,7 @@
                 android:text="Location: "
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/firebase_job_location"
@@ -135,10 +135,29 @@
                 android:layout_marginStart="8dp"
                 android:text="20"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/job_call_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/btn_call_service" />
+
+            <ImageButton
+                android:id="@+id/job_location_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/btn_location" />
+        </LinearLayout>
 
 
     </LinearLayout>

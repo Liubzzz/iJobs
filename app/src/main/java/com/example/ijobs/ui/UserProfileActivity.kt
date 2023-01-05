@@ -36,7 +36,7 @@ class UserProfileActivity : ComponentActivity() {
         var sendlocation = findViewById<ImageView>(R.id.id_location)
 
         showname.setText(ProfileCharacteristics.getUsername())
-        showmail.setText(ProfileCharacteristics.getEmail())
+        showmail.setText(ProfileCharacteristics.getPhonenumber())
 
         databasedescritpion = FirebaseDatabase.getInstance().getReference("users").child(ProfileCharacteristics.getKey().toString()).child("DescriptionProfile")
         databasedescritpion.addListenerForSingleValueEvent(object : ValueEventListener{
