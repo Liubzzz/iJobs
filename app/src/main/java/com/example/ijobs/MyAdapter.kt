@@ -13,6 +13,7 @@ class MyAdapter(private val serviceList:ArrayList<Services>):RecyclerView.Adapte
 
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView=LayoutInflater.from(parent.context).inflate(R.layout.servicelist_item_design_main_page, parent, false)
         return MyViewHolder(itemView)
