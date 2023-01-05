@@ -16,10 +16,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.145" />
 
     <TextView
         android:id="@+id/id_test2"
@@ -30,44 +30,81 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <ImageView
         android:id="@+id/id_message"
         android:layout_width="63dp"
         android:layout_height="50dp"
         android:src="@drawable/btn_message"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/my_serviceList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_test2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/id_location"
         android:layout_width="79dp"
         android:layout_height="48dp"
         android:src="@drawable/btn_location"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/my_serviceList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_test2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_serviceList"
-        android:layout_width="403dp"
-        android:layout_height="618dp"
+        android:layout_width="367dp"
+        android:layout_height="418dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796"
+        app:layout_constraintVertical_bias="0.948"
         tools:listitem="@layout/servicelist_item_design_main_page" />
+
+    <TextView
+        android:id="@+id/id_desctiption_profile"
+        android:layout_width="363dp"
+        android:layout_height="85dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/my_serviceList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_test1"
+        app:layout_constraintVertical_bias="0.208" />
+
+    <ImageView
+        android:id="@+id/btn_edit_profile_description"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        android:src="@drawable/btn_edit_profile_description"
+        app:layout_constraintBottom_toTopOf="@+id/my_serviceList"
+        app:layout_constraintEnd_toStartOf="@+id/id_message"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toEndOf="@+id/id_location"
+        app:layout_constraintTop_toBottomOf="@+id/id_desctiption_profile"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="135dp"
+        android:layout_height="120dp"
+        android:src="@drawable/profile_btn_image"
+        app:layout_constraintBottom_toTopOf="@+id/id_desctiption_profile"
+        app:layout_constraintEnd_toStartOf="@+id/id_test2"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

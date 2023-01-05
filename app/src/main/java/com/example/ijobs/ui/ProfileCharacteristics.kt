@@ -4,6 +4,15 @@ object ProfileCharacteristics {
 
     private var username: String? = null
     private var email: String? = null
+    private var key : String? = null
+
+    fun getKey(): String?{
+        return key
+    }
+
+    fun setKey(savekey: String){
+        key = savekey
+    }
 
     fun getUsername(): String? {
         return username

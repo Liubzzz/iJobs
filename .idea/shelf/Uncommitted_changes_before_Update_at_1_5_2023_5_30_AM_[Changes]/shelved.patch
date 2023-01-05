@@ -1,0 +1,126 @@
+Index: app/src/main/java/com/example/ijobs/LoginActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//package com.example.ijobs\r\n//\r\n//import android.content.Intent\r\n//import android.os.Bundle\r\n//import android.util.Log\r\n//import android.view.Window\r\n//import android.view.WindowManager\r\n//import android.widget.Button\r\n//import android.widget.EditText\r\n//import android.widget.Toast\r\n//import androidx.activity.ComponentActivity\r\n//import com.google.firebase.database.*\r\n//\r\n//class LoginActivity : ComponentActivity() {\r\n//    private var firebaseDatabase : FirebaseDatabase? = null\r\n//    private var databaseReference: DatabaseReference? = null\r\n//    override fun onCreate(savedInstanceState: Bundle?) {\r\n//        super.onCreate(savedInstanceState)\r\n//        requestWindowFeature(Window.FEATURE_NO_TITLE);\r\n//        getWindow().setFlags(\r\n//            WindowManager.LayoutParams.FLAG_FULLSCREEN,\r\n//            WindowManager.LayoutParams.FLAG_FULLSCREEN);\r\n//        setContentView(R.layout.login_page)\r\n//\r\n//        firebaseDatabase = FirebaseDatabase.getInstance()\r\n//        databaseReference = firebaseDatabase?.getReference(\"users\")\r\n//\r\n//\r\n//\r\n//        var username = findViewById(R.id.et_user_name) as EditText\r\n//        var password = findViewById(R.id.et_password) as EditText\r\n//        var btnlogin = findViewById(R.id.btn_login) as Button\r\n//        var btnregister = findViewById(R.id.btn_register) as Button\r\n//\r\n//        btnlogin.setOnClickListener{\r\n//            val intent = Intent(this,MainActivity::class.java)\r\n//            var count : Int? = 0\r\n//            databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {\r\n//                override fun onDataChange(snapshot: DataSnapshot) {\r\n//                    for(ds in snapshot.children){\r\n//\r\n//                        val id = ds.key\r\n//                        val userName = ds.child(\"userName\").value.toString()\r\n//                        val userPassword = ds.child(\"userPassword\").value.toString()\r\n//                        val userEmail = ds.child(\"userEmail\").value.toString()\r\n//\r\n//                        if(username.text.toString() == userName && password.text.toString() == userPassword){\r\n//                            startActivity(intent)\r\n//                            count = 1\r\n//                        }\r\n//                    }\r\n//\r\n//                }\r\n//\r\n//                override fun onCancelled(error: DatabaseError) {\r\n//                    Log.e(\"ooooo\",\"onCancelled: ${error.toException()}\")\r\n//                }\r\n//\r\n//            })\r\n//            if(count == 0){\r\n//                // Toast.makeText(applicationContext, \"Error!\", Toast.LENGTH_SHORT).show()\r\n//            }\r\n//\r\n//        }\r\n//\r\n//        btnregister.setOnClickListener {\r\n//            val intent = Intent(this,RegisterActivity::class.java)\r\n//            startActivity(intent)\r\n//        }\r\n//\r\n//    }\r\n//\r\n//    private fun getData() {\r\n//        databaseReference?.addValueEventListener(object : ValueEventListener {\r\n//            override fun onDataChange(snapshot: DataSnapshot) {\r\n//                for(ds in snapshot.children){\r\n//                    val id = ds.key\r\n//                    val userName = ds.child(\"userName\").value.toString()\r\n//                    val userPassword = ds.child(\"userPassword\").value.toString()\r\n//                    val userEmail = ds.child(\"userEmail\").value.toString()\r\n//\r\n//\r\n//\r\n//                }\r\n//\r\n//            }\r\n//\r\n//            override fun onCancelled(error: DatabaseError) {\r\n//                Log.e(\"ooooo\",\"onCancelled: ${error.toException()}\")\r\n//            }\r\n//\r\n//        })\r\n//    }\r\n//}\r\n\r\n\r\n\r\n\r\npackage com.example.ijobs\r\n\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.view.Window\r\nimport android.view.WindowManager\r\nimport android.widget.Button\r\nimport android.widget.EditText\r\nimport android.widget.Toast\r\nimport androidx.activity.ComponentActivity\r\nimport com.example.ijobs.ui.ProfileCharacteristics\r\nimport com.google.firebase.database.*\r\n\r\nclass LoginActivity : ComponentActivity() {\r\n    private var firebaseDatabase : FirebaseDatabase? = null\r\n    private var databaseReference: DatabaseReference? = null\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        requestWindowFeature(Window.FEATURE_NO_TITLE);\r\n        getWindow().setFlags(\r\n            WindowManager.LayoutParams.FLAG_FULLSCREEN,\r\n            WindowManager.LayoutParams.FLAG_FULLSCREEN);\r\n        setContentView(R.layout.login_page)\r\n\r\n        firebaseDatabase = FirebaseDatabase.getInstance()\r\n        databaseReference = firebaseDatabase?.getReference(\"users\")\r\n\r\n\r\n\r\n        var username = findViewById(R.id.et_user_name) as EditText\r\n        var password = findViewById(R.id.et_password) as EditText\r\n        var btnlogin = findViewById(R.id.btn_login) as Button\r\n        var btnregister = findViewById(R.id.btn_register) as Button\r\n\r\n        btnlogin.setOnClickListener{\r\n            val intent = Intent(this,MainActivity::class.java)\r\n            var count : Int? = 0\r\n            databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {\r\n                override fun onDataChange(snapshot: DataSnapshot) {\r\n                    for(ds in snapshot.children){\r\n\r\n                        val id = ds.key\r\n                        val userName = ds.child(\"userName\").value.toString()\r\n                        val userPassword = ds.child(\"userPassword\").value.toString()\r\n                        val userEmail = ds.child(\"userEmail\").value.toString()\r\n\r\n                        if(username.text.toString() == userName && password.text.toString() == userPassword){\r\n\r\n                            ProfileCharacteristics.setUsername(userName)\r\n                            ProfileCharacteristics.setEmail(userEmail)\r\n\r\n                            startActivity(intent)\r\n                            count = 1\r\n                        }\r\n                    }\r\n\r\n                }\r\n\r\n                override fun onCancelled(error: DatabaseError) {\r\n                    Log.e(\"ooooo\",\"onCancelled: ${error.toException()}\")\r\n                }\r\n\r\n            })\r\n\r\n            if(count == 0){\r\n                // Toast.makeText(applicationContext, \"Error!\", Toast.LENGTH_SHORT).show()\r\n            }\r\n\r\n        }\r\n\r\n        btnregister.setOnClickListener {\r\n            val intent = Intent(this,RegisterActivity::class.java)\r\n            startActivity(intent)\r\n        }\r\n\r\n    }\r\n\r\n    private fun getData() {\r\n        databaseReference?.addValueEventListener(object : ValueEventListener {\r\n            override fun onDataChange(snapshot: DataSnapshot) {\r\n                for(ds in snapshot.children){\r\n                    val id = ds.key\r\n                    val userName = ds.child(\"userName\").value.toString()\r\n                    val userPassword = ds.child(\"userPassword\").value.toString()\r\n                    val userEmail = ds.child(\"userEmail\").value.toString()\r\n\r\n\r\n\r\n                }\r\n\r\n            }\r\n\r\n            override fun onCancelled(error: DatabaseError) {\r\n                Log.e(\"ooooo\",\"onCancelled: ${error.toException()}\")\r\n            }\r\n\r\n        })\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/ijobs/LoginActivity.kt b/app/src/main/java/com/example/ijobs/LoginActivity.kt
+--- a/app/src/main/java/com/example/ijobs/LoginActivity.kt	(revision 6ec981c1db95b5392049ca47c2c3267e06535231)
++++ b/app/src/main/java/com/example/ijobs/LoginActivity.kt	(date 1672888480975)
+@@ -131,25 +131,31 @@
+         var btnlogin = findViewById(R.id.btn_login) as Button
+         var btnregister = findViewById(R.id.btn_register) as Button
+ 
++
+         btnlogin.setOnClickListener{
+-            val intent = Intent(this,MainActivity::class.java)
+-            var count : Int? = 0
+-            databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
++
++            var count : Int? = 1
++            databaseReference?.addValueEventListener(object : ValueEventListener {
+                 override fun onDataChange(snapshot: DataSnapshot) {
+-                    for(ds in snapshot.children){
++                    if(snapshot.exists()) {
++                        for (ds in snapshot.children) {
+ 
+-                        val id = ds.key
+-                        val userName = ds.child("userName").value.toString()
+-                        val userPassword = ds.child("userPassword").value.toString()
+-                        val userEmail = ds.child("userEmail").value.toString()
++                            val id = ds.key
++                            val userName = ds.child("userName").value.toString()
++                            val userPassword = ds.child("userPassword").value.toString()
++                            val userEmail = ds.child("userEmail").value.toString()
+ 
+-                        if(username.text.toString() == userName && password.text.toString() == userPassword){
++                            if (username.text.toString() == userName && password.text.toString() == userPassword) {
+ 
+-                            ProfileCharacteristics.setUsername(userName)
+-                            ProfileCharacteristics.setEmail(userEmail)
++
++                                ProfileCharacteristics.setUsername(userName)
++                                ProfileCharacteristics.setEmail(userEmail)
+ 
+-                            startActivity(intent)
+-                            count = 1
++                                //startActivity(intent)
++
++                            }
++
++
+                         }
+                     }
+ 
+@@ -161,9 +167,19 @@
+ 
+             })
+ 
+-            if(count == 0){
+-                // Toast.makeText(applicationContext, "Error!", Toast.LENGTH_SHORT).show()
+-            }
++//            if(ProfileCharacteristics.getEmail()!=null){
++//                startActivity(intent)
++//            }
++//            else
++                 if(ProfileCharacteristics.getUsername()==null) {
++                     username.error="nu-i bun contu"
++                 }
++                 else {
++                     Toast.makeText(applicationContext, ProfileCharacteristics.getUsername().toString(), Toast.LENGTH_SHORT).show()
++                     val intent = Intent(this,MainActivity::class.java)
++                     startActivity(intent)
++                 }
++
+ 
+         }
+ 
+@@ -174,25 +190,25 @@
+ 
+     }
+ 
+-    private fun getData() {
+-        databaseReference?.addValueEventListener(object : ValueEventListener {
+-            override fun onDataChange(snapshot: DataSnapshot) {
+-                for(ds in snapshot.children){
+-                    val id = ds.key
+-                    val userName = ds.child("userName").value.toString()
+-                    val userPassword = ds.child("userPassword").value.toString()
+-                    val userEmail = ds.child("userEmail").value.toString()
+-
+-
+-
+-                }
+-
+-            }
+-
+-            override fun onCancelled(error: DatabaseError) {
+-                Log.e("ooooo","onCancelled: ${error.toException()}")
+-            }
+-
+-        })
+-    }
++//    private fun getData() {
++//        databaseReference?.addValueEventListener(object : ValueEventListener {
++//            override fun onDataChange(snapshot: DataSnapshot) {
++//                for(ds in snapshot.children){
++//                    val id = ds.key
++//                    val userName = ds.child("userName").value.toString()
++//                    val userPassword = ds.child("userPassword").value.toString()
++//                    val userEmail = ds.child("userEmail").value.toString()
++//
++//
++//
++//                }
++//
++//            }
++//
++//            override fun onCancelled(error: DatabaseError) {
++//                Log.e("ooooo","onCancelled: ${error.toException()}")
++//            }
++//
++//        })
++//    }
+ }
+\ No newline at end of file

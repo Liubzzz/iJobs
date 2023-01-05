@@ -142,13 +142,14 @@ class LoginActivity : ComponentActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(ds in snapshot.children){
 
-                        val id = ds.key
+                        val id = ds.key.toString()
                         val userName = ds.child("userName").value.toString()
                         val userPassword = ds.child("userPassword").value.toString()
                         val userEmail = ds.child("userEmail").value.toString()
 
                         if(username.text.toString() == userName && password.text.toString() == userPassword){
 
+                            ProfileCharacteristics.setKey(id)
                             ProfileCharacteristics.setUsername(userName)
                             ProfileCharacteristics.setEmail(userEmail)
                             startActivity(intent)
