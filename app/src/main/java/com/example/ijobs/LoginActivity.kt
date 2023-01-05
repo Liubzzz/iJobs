@@ -100,6 +100,7 @@ package com.example.ijobs
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
@@ -109,6 +110,8 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.ijobs.ui.ProfileCharacteristics
 import com.google.firebase.database.*
+import kotlinx.coroutines.NonCancellable.cancel
+import kotlinx.coroutines.delay
 
 class LoginActivity : ComponentActivity() {
     private var firebaseDatabase : FirebaseDatabase? = null
@@ -125,6 +128,8 @@ class LoginActivity : ComponentActivity() {
         databaseReference = firebaseDatabase?.getReference("users")
 
 
+        var count : Int? = 0
+        var toast : Toast =  Toast.makeText(applicationContext, "Error!", Toast.LENGTH_SHORT)
 
         var username = findViewById(R.id.et_user_name) as EditText
         var password = findViewById(R.id.et_password) as EditText
@@ -133,7 +138,6 @@ class LoginActivity : ComponentActivity() {
 
         btnlogin.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
-            var count : Int? = 0
             databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(ds in snapshot.children){
@@ -147,9 +151,11 @@ class LoginActivity : ComponentActivity() {
 
                             ProfileCharacteristics.setUsername(userName)
                             ProfileCharacteristics.setEmail(userEmail)
-
                             startActivity(intent)
+                            toast.cancel()
+
                             count = 1
+
                         }
                     }
 
@@ -158,14 +164,20 @@ class LoginActivity : ComponentActivity() {
                 override fun onCancelled(error: DatabaseError) {
                     Log.e("ooooo","onCancelled: ${error.toException()}")
                 }
-
             })
 
-            if(count == 0){
-                // Toast.makeText(applicationContext, "Error!", Toast.LENGTH_SHORT).show()
-            }
+                Handler().postDelayed({
+                    if(count == 0){
+                        toast.show()
+                    }
+                }, 250)
+
+
+
 
         }
+
+
 
         btnregister.setOnClickListener {
             val intent = Intent(this,RegisterActivity::class.java)
