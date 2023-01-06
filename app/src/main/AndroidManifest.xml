@@ -20,7 +20,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".GifActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.IJobs"
@@ -55,6 +55,13 @@
 
         <activity
             android:name=".ui.EditProfileDescription"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
