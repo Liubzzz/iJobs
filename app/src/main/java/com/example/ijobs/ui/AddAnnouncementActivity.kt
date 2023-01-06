@@ -281,6 +281,8 @@ class AddAnnouncementActivity : ComponentActivity() {
 
         btn_save_announcement.setOnClickListener{
             registerNewAnnouncement()
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
 
         }
 

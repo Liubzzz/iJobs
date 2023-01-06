@@ -29,12 +29,6 @@ class MainActivity : ComponentActivity() {
         var btn_add = findViewById(R.id.btn_add) as ImageView
 
 
-        btn_home.setOnClickListener {
-            val intent = Intent(this,RegisterActivity::class.java)
-            startActivity(intent)
-        }
-
-
         btn_profile.setOnClickListener {
             val intent = Intent(this,UserProfileActivity::class.java)
             startActivity(intent)

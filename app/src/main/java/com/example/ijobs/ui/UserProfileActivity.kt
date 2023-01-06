@@ -4,6 +4,7 @@ package com.example.ijobs
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -34,6 +35,9 @@ class UserProfileActivity : ComponentActivity() {
         var showmail = findViewById<TextView>(R.id.id_test2)
         var sendmessage = findViewById<ImageView>(R.id.id_message)
         var sendlocation = findViewById<ImageView>(R.id.id_location)
+        var btn_home = findViewById(R.id.btn_home) as Button
+        var btn_profile = findViewById<ImageView>(R.id.btn_profile)
+        var btn_add = findViewById(R.id.btn_add) as ImageView
 
         showname.setText(ProfileCharacteristics.getUsername())
         showmail.setText(ProfileCharacteristics.getPhonenumber())
@@ -69,6 +73,16 @@ class UserProfileActivity : ComponentActivity() {
             val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
+        }
+
+        btn_home.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_add.setOnClickListener {
+            val intent = Intent(this,AddAnnouncementActivity::class.java)
+            startActivity(intent)
         }
 
 

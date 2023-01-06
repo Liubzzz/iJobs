@@ -7,6 +7,7 @@
     tools:context=".UserProfileActivity">
 
 
+
     <TextView
         android:id="@+id/id_test1"
         android:layout_width="197dp"
@@ -61,14 +62,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_serviceList"
-        android:layout_width="367dp"
-        android:layout_height="418dp"
+        android:layout_width="365dp"
+        android:layout_height="391dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948"
+        app:layout_constraintVertical_bias="0.752"
         tools:listitem="@layout/servicelist_item_design_main_page" />
 
     <TextView
@@ -107,4 +108,54 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.571" />
 
+    <Button
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="800dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.921" />
+
+
+    <ImageView
+        android:id="@+id/btn_add"
+        android:layout_width="49dp"
+        android:layout_height="46dp"
+        android:src="@drawable/add_btn_image"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/btn_profile"
+        android:layout_width="66dp"
+        android:layout_height="43dp"
+        android:src="@drawable/profile_btn_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
