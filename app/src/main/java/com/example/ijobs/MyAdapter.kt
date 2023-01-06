@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.compose.runtime.currentRecomposeScope
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ijobs.ui.EditProfileDescription
 import com.example.ijobs.ui.ProfileCharacteristics
+import java.security.AccessController.getContext
 
-val sendIntent = Intent(Intent.ACTION_VIEW)
 class MyAdapter(private val serviceList:ArrayList<Services>):RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -34,7 +35,13 @@ class MyAdapter(private val serviceList:ArrayList<Services>):RecyclerView.Adapte
         holder.location.text=currentService.serviceLocation
         holder.jobcallbtn.setOnClickListener{
            ProfileCharacteristics.setPhonenumber(currentService.servicePhone.toString())
+            ProfileCharacteristics.setSignaltransit("call")
 
+        }
+
+        holder.joblocationbtn.setOnClickListener{
+            ProfileCharacteristics.setLocation(currentService.serviceLocation.toString())
+            ProfileCharacteristics.setSignaltransit("location")
         }
 
     }

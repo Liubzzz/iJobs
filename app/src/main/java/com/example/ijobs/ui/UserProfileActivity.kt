@@ -40,7 +40,7 @@ class UserProfileActivity : ComponentActivity() {
         var btn_add = findViewById(R.id.btn_add) as ImageView
 
         showname.setText(ProfileCharacteristics.getUsername())
-        showmail.setText(ProfileCharacteristics.getPhonenumber())
+        showmail.setText(ProfileCharacteristics.getSignaltransit())
 
         databasedescritpion = FirebaseDatabase.getInstance().getReference("users").child(ProfileCharacteristics.getKey().toString()).child("DescriptionProfile")
         databasedescritpion.addListenerForSingleValueEvent(object : ValueEventListener{
