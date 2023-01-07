@@ -2,20 +2,18 @@ package com.example.ijobs
 
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import androidx.compose.animation.core.snap
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ijobs.ui.EditProfileDescription
 import com.example.ijobs.ui.ProfileCharacteristics
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.snapshots
+import java.net.URL
 
 
 class UserProfileActivity : ComponentActivity() {
@@ -41,6 +39,7 @@ class UserProfileActivity : ComponentActivity() {
 
         showname.setText(ProfileCharacteristics.getUsername())
         showmail.setText(ProfileCharacteristics.getEmail())
+
 
         databasedescritpion = FirebaseDatabase.getInstance().getReference("users").child(ProfileCharacteristics.getKey().toString()).child("DescriptionProfile")
         databasedescritpion.addListenerForSingleValueEvent(object : ValueEventListener{

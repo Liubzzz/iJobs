@@ -1,30 +1,25 @@
 package com.example.ijobs
 
+import android.app.AlertDialog
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.os.Handler
+import android.os.Process
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ijobs.ui.ProfileCharacteristics
 import com.google.firebase.database.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.NonCancellable.cancel
-import java.util.*
-import kotlin.collections.ArrayList
 
 class MainActivity : ComponentActivity() {
     private val job = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.Default + job)
-
+    lateinit var dialog: AlertDialog
     private var loop : String? = "0"
     private lateinit var database: DatabaseReference
     private lateinit var serviceRecycerView: RecyclerView
@@ -37,13 +32,23 @@ class MainActivity : ComponentActivity() {
 
 
         // get reference to all views
-
-       //-------
-
         startTimer()
 
         //-------
 
+
+        //Dialog---------------
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirm Exit?").setPositiveButton("YES",
+            DialogInterface.OnClickListener { dialogInterface, i ->
+                moveTaskToBack(true)
+                Process.killProcess(Process.myPid())
+                System.exit(1)
+            }).setNegativeButton("NO",
+            DialogInterface.OnClickListener { dialogInterface, i -> })
+        dialog = builder.create()
+
+        //-------
 
         var btn_home = findViewById(R.id.btn_home1) as ImageView
         var btn_profile = findViewById<ImageView>(R.id.btn_profile)
@@ -152,5 +157,7 @@ class MainActivity : ComponentActivity() {
         } )
     }
 
-
+    override fun onBackPressed() {
+        dialog.show()
+    }
 }
