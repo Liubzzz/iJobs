@@ -14,7 +14,7 @@ class GifActivity : ComponentActivity() {
         Handler().postDelayed({
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-        }, 2000)
+        }, 2300)
     }
 
 }

@@ -1,21 +1,12 @@
 package com.example.ijobs
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.compose.runtime.currentRecomposeScope
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ijobs.ui.EditProfileDescription
 import com.example.ijobs.ui.ProfileCharacteristics
-import java.security.AccessController.getContext
 
 class MyAdapter(private val serviceList:ArrayList<Services>):RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
@@ -31,7 +22,7 @@ class MyAdapter(private val serviceList:ArrayList<Services>):RecyclerView.Adapte
         holder.title.text=currentService.serviceTitle
         holder.description.text=currentService.serviceDescription
         holder.phoneNumber.text=currentService.servicePhone
-        holder.price.text=currentService.servicePrice
+        holder.price.text=currentService.servicePrice + " Lei"
         holder.location.text=currentService.serviceLocation
         holder.jobcallbtn.setOnClickListener{
            ProfileCharacteristics.setPhonenumber(currentService.servicePhone.toString())

@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
         //-------
 
 
-        var btn_home = findViewById(R.id.btn_home) as Button
+        var btn_home = findViewById(R.id.btn_home1) as ImageView
         var btn_profile = findViewById<ImageView>(R.id.btn_profile)
         var btn_add = findViewById(R.id.btn_add) as ImageView
 

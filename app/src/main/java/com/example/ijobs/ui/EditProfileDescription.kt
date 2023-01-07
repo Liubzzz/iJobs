@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import com.example.ijobs.LoginActivity
+import com.example.ijobs.MainActivity
 import com.example.ijobs.R
 import com.example.ijobs.UserProfileActivity
 import com.google.firebase.database.DatabaseReference
@@ -23,7 +24,7 @@ class EditProfileDescription : ComponentActivity() {
         database = Firebase.database.reference
 
         var edittextprofile = findViewById(R.id.edit_profile_description) as EditText
-        var btnsavedescription = findViewById<Button>(R.id.btn_save_description)
+        var btnsavedescription = findViewById<ImageView>(R.id.btn_save_description)
         var btnback = findViewById<ImageView>(R.id.btn_back_to_profile)
 
         btnsavedescription.setOnClickListener{
@@ -38,5 +39,8 @@ class EditProfileDescription : ComponentActivity() {
         }
 
     }
-
+    override fun onBackPressed() {
+        val intent = Intent(this, UserProfileActivity::class.java)
+        startActivity(intent)
+    }
 }

@@ -35,12 +35,12 @@ class UserProfileActivity : ComponentActivity() {
         var showmail = findViewById<TextView>(R.id.id_test2)
         var sendmessage = findViewById<ImageView>(R.id.id_message)
         var sendlocation = findViewById<ImageView>(R.id.id_location)
-        var btn_home = findViewById(R.id.btn_home) as Button
+        var btn_home = findViewById(R.id.btn_home) as ImageView
         var btn_profile = findViewById<ImageView>(R.id.btn_profile)
         var btn_add = findViewById(R.id.btn_add) as ImageView
 
         showname.setText(ProfileCharacteristics.getUsername())
-        showmail.setText(ProfileCharacteristics.getSignaltransit())
+        showmail.setText(ProfileCharacteristics.getEmail())
 
         databasedescritpion = FirebaseDatabase.getInstance().getReference("users").child(ProfileCharacteristics.getKey().toString()).child("DescriptionProfile")
         databasedescritpion.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -130,5 +130,8 @@ class UserProfileActivity : ComponentActivity() {
         } )
     }
 
-
+    override fun onBackPressed() {
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+    }
 }
