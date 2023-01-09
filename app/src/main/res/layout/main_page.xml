@@ -47,14 +47,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/serviceList"
-        android:layout_width="407dp"
-        android:layout_height="725dp"
+        android:layout_width="414dp"
+        android:layout_height="670dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116"
+        app:layout_constraintVertical_bias="0.262"
         tools:listitem="@layout/servicelist_item_design_main_page">
 
     </androidx.recyclerview.widget.RecyclerView>

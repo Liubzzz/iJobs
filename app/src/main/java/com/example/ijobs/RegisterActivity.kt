@@ -111,6 +111,8 @@ class RegisterActivity : ComponentActivity() {
                     Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
                 }
 
+               val intent = Intent(this,LoginActivity::class.java)
+               startActivity(intent)
         }}
 
 
@@ -125,8 +127,8 @@ class RegisterActivity : ComponentActivity() {
         }
         btn_register.setOnClickListener {
             registerNewUser()
-            val intent = Intent(this,LoginActivity::class.java)
-            startActivity(intent)
+            //val intent = Intent(this,LoginActivity::class.java)
+            //startActivity(intent)
 
 
         }
