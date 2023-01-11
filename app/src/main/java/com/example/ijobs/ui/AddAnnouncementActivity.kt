@@ -1,16 +1,20 @@
 package com.example.ijobs
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.ijobs.ui.ProfileCharacteristics
-import com.google.firebase.database.DatabaseReference
+import com.example.ijobs.ui.ServiceCharacteristics
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 private lateinit var database: DatabaseReference
+private var databaseReference: DatabaseReference? = null
+private var firebaseDatabase: FirebaseDatabase? = null
 
 class AddAnnouncementActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,7 @@ class AddAnnouncementActivity : ComponentActivity() {
         var job_phone = findViewById(R.id.job_phone) as EditText
         var job_price = findViewById(R.id.job_price) as EditText
         var job_location = findViewById(R.id.job_location) as EditText
+
 
 
         fun registerNewAnnouncement() {
@@ -88,6 +93,7 @@ class AddAnnouncementActivity : ComponentActivity() {
                             job_phone.text.clear()
                             job_price.text.clear()
                             job_location.text.clear()
+                            ServiceCharacteristics.setKey(serviceId)
 
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
@@ -102,8 +108,13 @@ class AddAnnouncementActivity : ComponentActivity() {
             }
         }
 
+
+        firebaseDatabase = FirebaseDatabase.getInstance()
+
         btn_save_announcement.setOnClickListener {
             registerNewAnnouncement()
+
+
 
 
         }

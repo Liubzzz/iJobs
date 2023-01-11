@@ -5,14 +5,20 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ijobs.ui.EditProfileDescription
 import com.example.ijobs.ui.ProfileCharacteristics
+import com.example.ijobs.ui.ServiceCharacteristics
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.net.URL
 
 
@@ -22,6 +28,10 @@ class UserProfileActivity : ComponentActivity() {
     private lateinit var  databasedescritpion : DatabaseReference
     private lateinit var serviceRecycerView: RecyclerView
     private lateinit var serviceArrayList:ArrayList<Services>
+
+    private var databaseReference: DatabaseReference? = null
+    private var firebaseDatabase: FirebaseDatabase? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +45,18 @@ class UserProfileActivity : ComponentActivity() {
         var sendlocation = findViewById<ImageView>(R.id.id_location)
         var btn_home = findViewById(R.id.btn_home) as ImageView
         var btn_profile = findViewById<ImageView>(R.id.btn_profile)
+
         var btn_add = findViewById(R.id.btn_add) as ImageView
+        var servicetobedeleted= findViewById<EditText>(R.id.serviceToBeDeleted)
+        var btn_delete_service=findViewById<ImageView>(R.id.delete_service)
+
 
         showname.setText(ProfileCharacteristics.getUsername())
         showmail.setText(ProfileCharacteristics.getEmail())
 
+        database = Firebase.database.reference
+
+        firebaseDatabase = FirebaseDatabase.getInstance()
 
         databasedescritpion = FirebaseDatabase.getInstance().getReference("users").child(ProfileCharacteristics.getKey().toString()).child("DescriptionProfile")
         databasedescritpion.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -54,6 +71,9 @@ class UserProfileActivity : ComponentActivity() {
             }
 
         })
+
+
+
 
         btneditdescription.setOnClickListener{
             val intent = Intent(this,EditProfileDescription::class.java)
@@ -83,6 +103,60 @@ class UserProfileActivity : ComponentActivity() {
             val intent = Intent(this,AddAnnouncementActivity::class.java)
             startActivity(intent)
         }
+
+
+
+
+        btn_delete_service.setOnClickListener {
+            var serviceTitle= servicetobedeleted.text.toString()
+            if(serviceTitle.isNotEmpty()){
+
+
+
+
+
+
+
+
+                databaseReference = firebaseDatabase?.getReference("services")
+
+
+                databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (ds in snapshot.children) {
+
+                            val id = ds.key.toString()
+                            val jobTitle = ds.child("serviceTitle").value.toString()
+
+
+
+                            if(serviceTitle==jobTitle)
+                                ServiceCharacteristics.setKey(id)
+                        }
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e("ooooo", "onCancelled: ${error.toException()}")
+                    }
+                })
+                servicetobedeleted.text.clear()
+
+                deleteService()
+            }
+
+
+            else
+                Toast.makeText(this, "Enter a service you want to delete", Toast.LENGTH_LONG).show()
+
+        }
+
+
+
+
+
+
+
 
 
         serviceRecycerView=findViewById(R.id.my_serviceList)
@@ -128,6 +202,31 @@ class UserProfileActivity : ComponentActivity() {
 
         } )
     }
+
+    fun deleteService() {
+
+
+
+
+
+
+        database = FirebaseDatabase.getInstance().getReference("services")
+        database.child(ServiceCharacteristics.getKey().toString()).removeValue().addOnSuccessListener {
+
+
+            Toast.makeText(this, "Service deleted", Toast.LENGTH_LONG).show()
+        }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed", Toast.LENGTH_LONG).show()
+
+            }
+
+
+
+
+    }
+
+
 
     override fun onBackPressed() {
         val intent = Intent(this,MainActivity::class.java)
